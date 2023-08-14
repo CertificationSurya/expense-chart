@@ -1,0 +1,94 @@
+@use 'sass:math';
+@import '_variables';
+
+$utilities: (
+    "padding": (
+        "prefix": 'p',
+        "values": (
+            "1" : $base-value,
+            "2" : $base-value * 2,
+            "3" : $base-value * 3,
+            "4" : $base-value * 4,
+        )
+    ),
+    "padding-inline": (
+        "prefix": 'pi',
+        "values": (
+            "1" : $base-value,
+            "2" : $base-value * 2,
+            "3" : $base-value * 3,
+            "4" : $base-value * 4,
+        )
+    ),
+    "padding-block": (
+        "prefix": 'pb',
+        "values": (
+            "1" : $base-value,
+            "2" : $base-value * 2,
+            "3" : $base-value * 3,
+            "4" : $base-value * 4,
+        )
+    ),
+    "margin": (
+        "prefix": 'm',
+        "values": (
+            "1" : $base-value,
+            "2" : $base-value * 2,
+            "3" : $base-value * 3,
+            "4" : $base-value * 4,
+        )
+    ),
+    "margin-inline": (
+        "prefix": 'mi',
+        "values": (
+            "1" : $base-value,
+            "2" : $base-value * 2,
+            "3" : $base-value * 3,
+            "4" : $base-value * 4,
+        )
+    ),
+    "margin-block": (
+        "prefix": 'mb',
+        "values": (
+            "1" : $base-value,
+            "2" : $base-value * 2,
+            "3" : $base-value * 3,
+            "4" : $base-value * 4,
+        )
+    ),
+    "font-size": (
+        "prefix": 'fs',
+        "values": (
+            "0" : $base-fontValue * 0.8,
+            "1" : $base-fontValue * 1.5,
+            "2" : $base-fontValue * 1.75,
+            "3" : $base-fontValue * 2.2,
+            "4" : $base-fontValue * 2.5,
+        )
+    ),
+    
+    "border-radius": (
+        "prefix": 'br',
+        "values": (
+            "0" : $base-border*0.5,
+            "1" : $base-border * 1.4,
+            "2" : $base-border * 1.6,
+            "3" : $base-border * 1.8,
+            "circle" : 50%,
+        )
+    )
+);
+
+
+@each $property, $map in $utilities{
+    $prefix: map-get($map, "prefix");
+    $value: map-get($map, "values");
+
+    @each $k, $v in $value{
+        .#{$prefix}-#{$k}{
+            #{$property} : $v;
+        }
+    }
+}
+
+
